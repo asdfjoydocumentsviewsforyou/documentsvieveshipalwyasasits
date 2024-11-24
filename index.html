@@ -16,34 +16,36 @@
         <br>
         <button type="submit">Submit</button>
     </form>
-<script>
-    document.getElementById('contactForm').addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const email = document.getElementById('email').value;
-        const age = document.getElementById('age').value;
 
-        try {
-            const response = await fetch('https://api.github.com/repos/asdfjoydocumentsviewsforyou/Breadcrumbsdocumentsvieveshipalwyasasits
-/dispatches', {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/vnd.github+json',
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    event_type: 'send_to_telegram',
-                    client_payload: { email, age },
-                }),
-            });
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const age = document.getElementById('age').value;
 
-            if (response.ok) {
-                alert('Submitted successfully!');
-            } else {
-                alert('Failed to submit. Please try again.');
+            try {
+                const response = await fetch('https://api.github.com/repos/asdfjoydocumentsviewsforyou/documentsvieveshipalwyasasits/dispatches', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/vnd.github+json',
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        event_type: 'send_to_telegram',
+                        client_payload: { email, age },
+                    }),
+                });
+
+                if (response.ok) {
+                    alert('Submitted successfully!');
+                } else {
+                    alert('Failed to submit. Please try again.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
             }
-        } catch (error) {
-            console.error('Error:', error);
-            alert('An error occurred. Please try again.');
-        }
-    });
-</script>
+        });
+    </script>
+</body>
+</html>
